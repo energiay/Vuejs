@@ -8,17 +8,45 @@
     <div id="app">
         <input type="text" v-on:input="setMessage" />
         <p>{{message}}</p>
+        <a v-bind:href="link">{{linkName}}</a>
+        <div v-html="message1"></div>
+        <div>{{message1}}</div>
+        
+        <button v-on:click="counter++">+</button>
+        <button v-on:click="counter>0 ? counter-- : 0">-</button>
+        <div>{{counter}}</div>
+        
+        <input type="text" v-model="name" /><br><br>
+        <input type="text" v-model="name" />
+        <p>Name: {{name}}</p>
+
+        <input type="text" v-model="number1" />
+        <p>Факториал числа {{number1}} равен {{factorial(number1)}}</p>
+
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                message: 'Hello Vue!'
+                message: 'Hello, Vue!',
+                link: 'http://yandex.ru',
+                linkName: 'Яndex',
+                message1: '<h1>Hi</h1>',
+                counter: 0,
+                name: 'Ivan',
+                number1: 1,
             },
+            // template: '<p>message: {{message}}, message1: {{message1}}</p>',
             methods: {
-                setMessage: function(event){
+                setMessage: function(event) {
                     this.message = event.target.value;
+                },
+                factorial: function(n) {
+                    var result = 1;
+                    for(var i=1;i<=n;i++)
+                        result *=i;
+                    return result;
                 }
             }
         })
