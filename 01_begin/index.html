@@ -1,8 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Изучаем Vue.js</title>
-<meta charset="utf-8" />
+    <title>Изучаем Vue.js</title>
+    <meta charset="utf-8" />
+    <style>
+        .region{
+            background-color: #999;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            margin: 10px;
+        }
+        .active{
+            background-color:#cc003d;
+        }
+        .yellow{ 
+            background-color: yellow; 
+        }
+        .red{ 
+            background-color: red; 
+        }
+        .blue{ 
+            background-color: blue; 
+        }
+        .green{ 
+            background-color: green; 
+        }
+        </style>
 </head>
 <body>
     <div id="app">
@@ -23,6 +47,9 @@
         <input type="text" v-model="number1" />
         <p>Факториал числа {{number1}} равен {{factorial(number1)}}</p>
 
+        <div class="region" v-bind:class="{active: isActive}" v-on:click="isActive = !isActive"></div>
+        <div class="region" v-bind:class="background"></div>
+        <input type="text" v-model="background" />
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script>
@@ -36,6 +63,8 @@
                 counter: 0,
                 name: 'Ivan',
                 number1: 1,
+                isActive: true,
+                background: '',
             },
             // template: '<p>message: {{message}}, message1: {{message1}}</p>',
             methods: {
